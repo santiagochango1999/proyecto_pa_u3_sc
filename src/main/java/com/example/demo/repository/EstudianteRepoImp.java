@@ -11,17 +11,17 @@ import jakarta.transaction.Transactional;
 
 @Transactional
 @Repository
-public class EstudianteRepoImp implements IEstudianteRepo{
+public class EstudianteRepoImp implements IEstudianteRepo {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@Override
 	public Estudiante buscarPorNombreQuery(String nombre) {
 		// TODO Auto-generated method stub
-		//SELECT * from estudiante where estu_nombre=´edison´
-		//select e from Estudiante e where e.nombre= :datoNombre		
-		Query jpqlQuery=this.entityManager.createQuery("select e from Estudiante e where e.nombre = :datoNombre");
+		// SELECT * from estudiante where estu_nombre=´edison´
+		// select e from Estudiante e where e.nombre= :datoNombre
+		Query jpqlQuery = this.entityManager.createQuery("select e from Estudiante e where e.nombre = :datoNombre");
 		jpqlQuery.setParameter("datoNombre", nombre);
 		return (Estudiante) jpqlQuery.getSingleResult();
 	}
@@ -29,7 +29,38 @@ public class EstudianteRepoImp implements IEstudianteRepo{
 	@Override
 	public Estudiante buscarPorApellidoQuery(String apellido) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		// select e from Estudiante e where e.apellido= :datoApellido
+		Query jpqlQuery = this.entityManager.createQuery("select e from Estudiante e where e.apellido= :datoApellido");
+		jpqlQuery.setParameter("datoApellido", apellido);
+		return (Estudiante) jpqlQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorGeneroQuery(String genero) {
+		// TODO Auto-generated method stub
+		Query jpqlQuery =this.entityManager.createQuery("select e from Estudiante e where e.genero = :datoGenero");
+		jpqlQuery.setParameter("datoGenero", genero);		
+		return (Estudiante) jpqlQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorCedulaQuery(String cedula) {
+		// TODO Auto-generated method stub
+		Query jpqlQuery = this.entityManager.createQuery("select e from Estudiante e where e.cedula = :datoCedula");
+		jpqlQuery.setParameter("datoCedula", cedula);
+		return (Estudiante) jpqlQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorCiudadQuery(String ciudad) {
+		// TODO Auto-generated method stub
+		// SELECT * from estudiante where estu_nombre=´edison´
+		// select e from Estudiante e where e.nombre= :datoNombre
+		Query jpqlQuery = this.entityManager.createQuery("select e from Estudiante e where e.ciudad = :datoCiudad");
+		jpqlQuery.setParameter("datoCiudad", ciudad);
+		return (Estudiante) jpqlQuery.getSingleResult();
+		
 	}
 
 	@Override

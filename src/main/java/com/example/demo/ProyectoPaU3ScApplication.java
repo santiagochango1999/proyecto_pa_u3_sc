@@ -35,7 +35,15 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner{
 		estudiante.setPais("ecuador");
 		estudiante.setSalario(new BigDecimal(0));
 		//this.estudianteService.insertar(estudiante);
-		this.estudianteService.modificarPorNombre("santiag");
+		System.out.println("BUSCAR POR APELLIDO");
+		System.out.println(this.estudianteService.buscarPorApellido("chango"));
+		System.out.println("BUSCAR POR GENERO");
+		System.out.println(this.estudianteService.buscarPorGeneroQuery("m"));
+		System.out.println("BUSCAR POR CEDULA");
+		System.out.println(this.estudianteService.buscarPorCedulaQuery("1544561"));
+		System.out.println("BUSCAR POR CIUDAD");
+		System.out.println(this.estudianteService.buscarPorCiudadQuery("quito"));
+
 	}
 
 }
