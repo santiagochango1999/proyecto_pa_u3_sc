@@ -7,6 +7,7 @@ import com.example.demo.modelo.Estudiante;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Transactional
@@ -29,7 +30,7 @@ public class EstudianteRepoImp implements IEstudianteRepo {
 	@Override
 	public Estudiante buscarPorApellidoQuery(String apellido) {
 		// TODO Auto-generated method stub
-		
+
 		// select e from Estudiante e where e.apellido= :datoApellido
 		Query jpqlQuery = this.entityManager.createQuery("select e from Estudiante e where e.apellido= :datoApellido");
 		jpqlQuery.setParameter("datoApellido", apellido);
@@ -39,8 +40,8 @@ public class EstudianteRepoImp implements IEstudianteRepo {
 	@Override
 	public Estudiante buscarPorGeneroQuery(String genero) {
 		// TODO Auto-generated method stub
-		Query jpqlQuery =this.entityManager.createQuery("select e from Estudiante e where e.genero = :datoGenero");
-		jpqlQuery.setParameter("datoGenero", genero);		
+		Query jpqlQuery = this.entityManager.createQuery("select e from Estudiante e where e.genero = :datoGenero");
+		jpqlQuery.setParameter("datoGenero", genero);
 		return (Estudiante) jpqlQuery.getSingleResult();
 	}
 
@@ -60,13 +61,55 @@ public class EstudianteRepoImp implements IEstudianteRepo {
 		Query jpqlQuery = this.entityManager.createQuery("select e from Estudiante e where e.ciudad = :datoCiudad");
 		jpqlQuery.setParameter("datoCiudad", ciudad);
 		return (Estudiante) jpqlQuery.getSingleResult();
-		
+
 	}
 
 	@Override
 	public void insertar(Estudiante estudiante) {
 		// TODO Auto-generated method stub
 		this.entityManager.persist(estudiante);
+	}
+
+	@Override
+	public Estudiante buscarPorNombreTypeQuery(String nombre) {
+		// TODO Auto-generated method stub
+		TypedQuery<Estudiante> myTypedQuery = this.entityManager
+				.createQuery("select e from Estudiante e where e.nombre = :datoNombre", Estudiante.class);
+		myTypedQuery.setParameter("datoNombre", nombre);
+		return myTypedQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorNombreNamedQuery(String nombre) {
+		// TODO Auto-generated method stub
+		Query myQuery = this.entityManager.createNamedQuery("Estudiante.buscarPorNom");
+		myQuery.setParameter("datoNombre", nombre);
+
+		return (Estudiante) myQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorNombreNamedQueryTyped(String nombre) {
+		TypedQuery<Estudiante> myQuery = this.entityManager.createNamedQuery("Estudiante.buscarPorNom",
+				Estudiante.class);
+		myQuery.setParameter("datoNombre", nombre);
+		return myQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorNombreNativeQuery(String nombre) {
+		// TODO Auto-generated method stub
+		Query myQuery=this.entityManager.createNativeQuery("select * from estudiante where estu_nombre = :datoNombre",Estudiante.class);
+		myQuery.setParameter("datoNombre", nombre);
+		return (Estudiante)myQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorNombreNativeQueryTypedNamed(String nombre) {
+		// TODO Auto-generated method stub
+		TypedQuery<Estudiante> myQuery=this.entityManager.createNamedQuery("Estudiante.bucarPorNombreNativo", Estudiante.class);
+		myQuery.setParameter("datoNombre", nombre);
+		return myQuery.getSingleResult();
 	}
 
 }

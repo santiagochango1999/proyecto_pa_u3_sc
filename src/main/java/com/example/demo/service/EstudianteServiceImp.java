@@ -47,4 +47,34 @@ public class EstudianteServiceImp implements IEstudianteService {
 		return this.iEstudianteRepo.buscarPorCiudadQuery(ciudad);
 	}
 
+	@Override
+	public Estudiante buscarPorNombreTypeQuery(String nombre) {
+		// TODO Auto-generated method stub
+		return this.iEstudianteRepo.buscarPorNombreTypeQuery(nombre);
+	}
+
+	@Override
+	public Estudiante buscarPorNombreNamedQuery(String nombre) {
+		// TODO Auto-generated method stub
+		return this.iEstudianteRepo.buscarPorNombreNamedQuery(nombre);
+	}
+
+	@Override
+	public Estudiante buscarPorNombreNamedQueryTyped(String nombre) {
+		// TODO Auto-generated method stub
+		return this.iEstudianteRepo.buscarPorNombreNamedQueryTyped(nombre);
+	}
+
+	@Override
+	public Estudiante buscarPorNombreNativeQuery(String nombre) {
+		// TODO Auto-generated method stub
+		return this.iEstudianteRepo.buscarPorNombreNativeQuery(nombre);
+	}
+
+	@Override
+	public Estudiante buscarPorNombreNativeQueryTypedNamed(String nombre) {
+		// TODO Auto-generated method stub
+		return this.iEstudianteRepo.buscarPorNombreNativeQueryTypedNamed(nombre);
+	}
+
 }
