@@ -42,19 +42,19 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		Estudiante estudiante =new Estudiante();
-		estudiante.setApellido("chango");
-		estudiante.setCedula("1544561");
-		estudiante.setCiudad("quito");
+		estudiante.setApellido("chan");
+		estudiante.setCedula("154456");
+		estudiante.setCiudad("guayaquil");
 		estudiante.setFechaNacimiento(LocalDateTime.now());
 		estudiante.setGenero("m");
-		estudiante.setHobby("luchar");
+		estudiante.setHobby("gym");
 		estudiante.setNombre("santiag");
-		estudiante.setPais("ecuador");
-		estudiante.setSalario(new BigDecimal(0));
+		estudiante.setPais("peru");
+		estudiante.setSalario(new BigDecimal(100));
 		
-		//this.estudianteService.insertar(estudiante);
+//		this.estudianteService.insertar(estudiante);
 //		System.out.println("BUSCAR POR APELLIDO");
-//		System.out.println(this.estudianteService.buscarPorApellido("chango"));
+//		System.out.println(this.estudianteService.buscarPorApellido("chan"));
 //		System.out.println("BUSCAR POR GENERO");
 //		System.out.println(this.estudianteService.buscarPorGeneroQuery("m"));
 //		System.out.println("BUSCAR POR CEDULA");
@@ -62,17 +62,23 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner{
 //		System.out.println("BUSCAR POR CIUDAD");
 //		System.out.println(this.estudianteService.buscarPorCiudadQuery("quito"));
 //		
-		System.out.println("BUSCAR POR nombre typedquery");
-		System.out.println(this.estudianteService.buscarPorNombreTypeQuery("santiag"));
-		System.out.println("BUSCAR POR nombre NAMEDquery");
-		System.out.println(this.estudianteService.buscarPorNombreNamedQuery("santiag"));
-		System.out.println("BUSCAR POR nombre namedqueryTYPED");
-		System.out.println(this.estudianteService.buscarPorNombreNamedQueryTyped("santiag"));
-		System.out.println("BUSCAR POR nombre NATIVEquery");
-		System.out.println(this.estudianteService.buscarPorNombreNativeQuery("santiag"));
+//		System.out.println("BUSCAR POR nombre typedquery");
+//		System.out.println(this.estudianteService.buscarPorNombreTypeQuery("santiag"));
+//		System.out.println("BUSCAR POR nombre NAMEDquery");
+//		System.out.println(this.estudianteService.buscarPorNombreNamedQuery("santiag"));
+//		System.out.println("BUSCAR POR nombre namedqueryTYPED");
+//		System.out.println(this.estudianteService.buscarPorNombreNamedQueryTyped("santiag"));
+//		System.out.println("BUSCAR POR nombre NATIVEquery");
+//		System.out.println(this.estudianteService.buscarPorNombreNativeQuery("santiag"));
 //		System.out.println("BUSCAR POR nombre NATIVEqueryTYPEDNAMED");
 //		System.out.println(this.estudianteService.buscarPorNombreNativeQueryTypedNamed("santiag"));
+//		
+	
+		List<Estudiante> list=this.estudianteService.buscarPorNombreQueryList("santiag");
 		
+		
+		System.out.println(list);
+
 		
 		//deber
 //		List<Renta> lista=new ArrayList<>();
