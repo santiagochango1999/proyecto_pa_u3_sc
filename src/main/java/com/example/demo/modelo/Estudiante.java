@@ -61,6 +61,10 @@ public class Estudiante {
 	@Column(name = "estu_fecha_nacimiento")
 	private LocalDateTime fechaNacimiento;
 
+	
+	
+	
+	
 	public void setPais(String pais) {
 		this.pais = pais;
 	}

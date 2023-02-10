@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.applet.AudioClip;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,21 +11,24 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.modelo.Automovil;
 import com.example.demo.modelo.Cliente;
 import com.example.demo.modelo.Estudiante;
 import com.example.demo.modelo.Renta;
 import com.example.demo.modelo.Vehiculo;
+import com.example.demo.service.IAutomovilService;
 import com.example.demo.service.IClienteService;
 import com.example.demo.service.IEstudianteService;
 import com.example.demo.service.IRentaService;
 import com.example.demo.service.IVehiculoService;
 
 @SpringBootApplication
-public class ProyectoPaU3ScApplication implements CommandLineRunner{
+public class ProyectoPaU3ScApplication implements CommandLineRunner {
 
 	@Autowired
-	private IEstudianteService estudianteService;
-	
+	private IAutomovilService iAutomovilService;
+//	private IEstudianteService estudianteService;
+
 //	@Autowired
 //	private IClienteService clienteService;
 //	
@@ -33,7 +37,7 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner{
 //	
 //	@Autowired
 //	private IRentaService rentaService;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU3ScApplication.class, args);
 	}
@@ -41,17 +45,17 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		Estudiante estudiante =new Estudiante();
-		estudiante.setApellido("chan");
-		estudiante.setCedula("154456");
-		estudiante.setCiudad("guayaquil");
-		estudiante.setFechaNacimiento(LocalDateTime.now());
-		estudiante.setGenero("m");
-		estudiante.setHobby("gym");
-		estudiante.setNombre("santiag");
-		estudiante.setPais("peru");
-		estudiante.setSalario(new BigDecimal(100));
-		
+//		Estudiante estudiante =new Estudiante();
+//		estudiante.setApellido("chan");
+//		estudiante.setCedula("154456");
+//		estudiante.setCiudad("guayaquil");
+//		estudiante.setFechaNacimiento(LocalDateTime.now());
+//		estudiante.setGenero("m");
+//		estudiante.setHobby("gym");
+//		estudiante.setNombre("santiag");
+//		estudiante.setPais("peru");
+//		estudiante.setSalario(new BigDecimal(100));
+//		
 //		this.estudianteService.insertar(estudiante);
 //		System.out.println("BUSCAR POR APELLIDO");
 //		System.out.println(this.estudianteService.buscarPorApellido("chan"));
@@ -73,14 +77,51 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner{
 //		System.out.println("BUSCAR POR nombre NATIVEqueryTYPEDNAMED");
 //		System.out.println(this.estudianteService.buscarPorNombreNativeQueryTypedNamed("santiag"));
 //		
-	
-		List<Estudiante> list=this.estudianteService.buscarPorNombreQueryList("santiag");
-		
-		
-		System.out.println(list);
 
-		
-		//deber
+//		List<Estudiante> list=this.estudianteService.buscarPorNombreQueryList("santiag");
+//		
+//		
+//		System.out.println(list);
+
+		// DEBER
+		Automovil automovil = new Automovil();
+		automovil.setAño("1999");
+		automovil.setMarca("TOYOTA");
+		automovil.setNombreDueño("santiago");
+		automovil.setNumeroPuertas("5");
+		automovil.setPlaca("PRT0392");
+		automovil.setColor("ROJO");
+		automovil.setValor(new BigDecimal(15000));
+
+//		this.iAutomovilService.crear(automovil);
+
+		// Placa
+		// 1
+		System.out.println("Consulta 1 " + this.iAutomovilService.buscarPorPlacaTypedQuery("PRT0392"));
+		// 2
+		System.out.println("Consulta 2 " + this.iAutomovilService.buscarPorPlacaNativeQuery("PRT0392"));
+		// 3
+		System.out.println("Consulta 3 " + this.iAutomovilService.buscarPorPlacaNamedQuery("PRT0392"));
+		// 4
+		System.out.println("Consulta 4 " + this.iAutomovilService.buscarPorPlacaNamedNativeQuery("PRT0392"));
+		// Marca
+		System.out.println("Consulta 5 " + this.iAutomovilService.buscarPorMarcaTypedQuery("TOYOTA"));
+		// 2
+		System.out.println("Consulta 6 " + this.iAutomovilService.buscarPorMarcaNativeQuery("TOYOTA"));
+		// 3
+		System.out.println("Consulta 7 " + this.iAutomovilService.buscarPorMarcaNamedQuery("TOYOTA"));
+		// 4
+		System.out.println("Consulta 8 " + this.iAutomovilService.buscarPorMarcaNamedNativeQuery("TOYOTA"));
+		// Color
+		System.out.println("Consulta 9 " + this.iAutomovilService.buscarPorColorTypedQuery("ROJO"));
+		// 2
+		System.out.println("Consulta 10 " + this.iAutomovilService.buscarPorColorNativeQuery("ROJO"));
+		// 3
+		System.out.println("Consulta 11 " + this.iAutomovilService.buscarPorColorNamedQuery("ROJO"));
+		// 4
+		System.out.println("Consulta 12 " + this.iAutomovilService.buscarPorColorNamedNativeQuery("ROJO"));
+
+		// deber
 //		List<Renta> lista=new ArrayList<>();
 //		
 //		Vehiculo vehiculo=new Vehiculo();
@@ -104,7 +145,6 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner{
 //		
 //		cliente.setRenta(lista);
 //		vehiculo.setRenta(lista);
-		
 
 	}
 
