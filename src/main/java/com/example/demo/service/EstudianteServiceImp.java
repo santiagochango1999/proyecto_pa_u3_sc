@@ -122,4 +122,16 @@ public class EstudianteServiceImp implements IEstudianteService {
 		return this.iEstudianteRepo.buscarPorNombreCriteriaAndOr(nombre, apellido, bandera);
 	}
 
+	@Override
+	public int eliminarPorApellido(String apellido) {
+		// TODO Auto-generated method stub
+		return this.iEstudianteRepo.eliminarPorApellido(apellido);
+	}
+
+	@Override
+	public int actualizarPorApellido(String apellido, String nombre) {
+		// TODO Auto-generated method stub
+		return this.iEstudianteRepo.actualizarPorApellido(apellido, nombre);
+	}
+
 }

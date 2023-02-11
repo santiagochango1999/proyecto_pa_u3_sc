@@ -46,7 +46,7 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 //		Estudiante estudiante =new Estudiante();
-//		estudiante.setApellido("chan");
+//		estudiante.setApellido("jami");
 //		estudiante.setCedula("154456");
 //		estudiante.setCiudad("guayaquil");
 //		estudiante.setFechaNacimiento(LocalDateTime.now());
@@ -83,14 +83,16 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 //		
 //		System.out.println(list);
 		
-		System.out.println(this.estudianteService.buscarPorNombreNamedQueryTypedDTO("santiag"));
-		System.out.println(this.estudianteService.buscarPorNombreTypedQueryDTO("santiag"));
-		System.out.println(this.estudianteService.buscarPorNombreQueryTypedCriteria("santiag"));
-		System.out.println("and");
-		System.out.println(this.estudianteService.buscarPorNombreCriteriaAndOr("santiag","chan","M"));
-		System.out.println("or");
-		System.out.println(this.estudianteService.buscarPorNombreCriteriaAndOr("santiag","chan","F"));
+//		System.out.println(this.estudianteService.buscarPorNombreNamedQueryTypedDTO("santiag"));
+//		System.out.println(this.estudianteService.buscarPorNombreTypedQueryDTO("santiag"));
+//		System.out.println(this.estudianteService.buscarPorNombreQueryTypedCriteria("santiag"));
+//		System.out.println("and");
+//		System.out.println(this.estudianteService.buscarPorNombreCriteriaAndOr("santiag","chan","M"));
+//		System.out.println("or");
+//		System.out.println(this.estudianteService.buscarPorNombreCriteriaAndOr("santiag","chan","F"));
 
+//		System.out.println(this.estudianteService.actualizarPorApellido("chan", "mateo"));
+//		System.out.println(this.estudianteService.eliminarPorApellido("jami"));
 		// DEBER
 //		Automovil automovil = new Automovil();
 //		automovil.setAño("1999");
@@ -153,6 +155,8 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 //		
 //		cliente.setRenta(lista);
 //		vehiculo.setRenta(lista);
+		//------------------------------------------------
+		
 
 	}
 
