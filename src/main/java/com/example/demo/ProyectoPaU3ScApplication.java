@@ -26,8 +26,8 @@ import com.example.demo.service.IVehiculoService;
 public class ProyectoPaU3ScApplication implements CommandLineRunner {
 
 	@Autowired
-	private IAutomovilService iAutomovilService;
-//	private IEstudianteService estudianteService;
+//	private IAutomovilService iAutomovilService;
+	private IEstudianteService estudianteService;
 
 //	@Autowired
 //	private IClienteService clienteService;
@@ -55,7 +55,7 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 //		estudiante.setNombre("santiag");
 //		estudiante.setPais("peru");
 //		estudiante.setSalario(new BigDecimal(100));
-//		
+////		
 //		this.estudianteService.insertar(estudiante);
 //		System.out.println("BUSCAR POR APELLIDO");
 //		System.out.println(this.estudianteService.buscarPorApellido("chan"));
@@ -82,44 +82,52 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 //		
 //		
 //		System.out.println(list);
+		
+		System.out.println(this.estudianteService.buscarPorNombreNamedQueryTypedDTO("santiag"));
+		System.out.println(this.estudianteService.buscarPorNombreTypedQueryDTO("santiag"));
+		System.out.println(this.estudianteService.buscarPorNombreQueryTypedCriteria("santiag"));
+		System.out.println("and");
+		System.out.println(this.estudianteService.buscarPorNombreCriteriaAndOr("santiag","chan","M"));
+		System.out.println("or");
+		System.out.println(this.estudianteService.buscarPorNombreCriteriaAndOr("santiag","chan","F"));
 
 		// DEBER
-		Automovil automovil = new Automovil();
-		automovil.setAño("1999");
-		automovil.setMarca("TOYOTA");
-		automovil.setNombreDueño("santiago");
-		automovil.setNumeroPuertas("5");
-		automovil.setPlaca("PRT0392");
-		automovil.setColor("ROJO");
-		automovil.setValor(new BigDecimal(15000));
-
-//		this.iAutomovilService.crear(automovil);
-
-		// Placa
-		// 1
-		System.out.println("Consulta 1 " + this.iAutomovilService.buscarPorPlacaTypedQuery("PRT0392"));
-		// 2
-		System.out.println("Consulta 2 " + this.iAutomovilService.buscarPorPlacaNativeQuery("PRT0392"));
-		// 3
-		System.out.println("Consulta 3 " + this.iAutomovilService.buscarPorPlacaNamedQuery("PRT0392"));
-		// 4
-		System.out.println("Consulta 4 " + this.iAutomovilService.buscarPorPlacaNamedNativeQuery("PRT0392"));
-		// Marca
-		System.out.println("Consulta 5 " + this.iAutomovilService.buscarPorMarcaTypedQuery("TOYOTA"));
-		// 2
-		System.out.println("Consulta 6 " + this.iAutomovilService.buscarPorMarcaNativeQuery("TOYOTA"));
-		// 3
-		System.out.println("Consulta 7 " + this.iAutomovilService.buscarPorMarcaNamedQuery("TOYOTA"));
-		// 4
-		System.out.println("Consulta 8 " + this.iAutomovilService.buscarPorMarcaNamedNativeQuery("TOYOTA"));
-		// Color
-		System.out.println("Consulta 9 " + this.iAutomovilService.buscarPorColorTypedQuery("ROJO"));
-		// 2
-		System.out.println("Consulta 10 " + this.iAutomovilService.buscarPorColorNativeQuery("ROJO"));
-		// 3
-		System.out.println("Consulta 11 " + this.iAutomovilService.buscarPorColorNamedQuery("ROJO"));
-		// 4
-		System.out.println("Consulta 12 " + this.iAutomovilService.buscarPorColorNamedNativeQuery("ROJO"));
+//		Automovil automovil = new Automovil();
+//		automovil.setAño("1999");
+//		automovil.setMarca("TOYOTA");
+//		automovil.setNombreDueño("santiago");
+//		automovil.setNumeroPuertas("5");
+//		automovil.setPlaca("PRT0392");
+//		automovil.setColor("ROJO");
+//		automovil.setValor(new BigDecimal(15000));
+//
+////		this.iAutomovilService.crear(automovil);
+//
+//		// Placa
+//		// 1
+//		System.out.println("Consulta 1 " + this.iAutomovilService.buscarPorPlacaTypedQuery("PRT0392"));
+//		// 2
+//		System.out.println("Consulta 2 " + this.iAutomovilService.buscarPorPlacaNativeQuery("PRT0392"));
+//		// 3
+//		System.out.println("Consulta 3 " + this.iAutomovilService.buscarPorPlacaNamedQuery("PRT0392"));
+//		// 4
+//		System.out.println("Consulta 4 " + this.iAutomovilService.buscarPorPlacaNamedNativeQuery("PRT0392"));
+//		// Marca
+//		System.out.println("Consulta 5 " + this.iAutomovilService.buscarPorMarcaTypedQuery("TOYOTA"));
+//		// 2
+//		System.out.println("Consulta 6 " + this.iAutomovilService.buscarPorMarcaNativeQuery("TOYOTA"));
+//		// 3
+//		System.out.println("Consulta 7 " + this.iAutomovilService.buscarPorMarcaNamedQuery("TOYOTA"));
+//		// 4
+//		System.out.println("Consulta 8 " + this.iAutomovilService.buscarPorMarcaNamedNativeQuery("TOYOTA"));
+//		// Color
+//		System.out.println("Consulta 9 " + this.iAutomovilService.buscarPorColorTypedQuery("ROJO"));
+//		// 2
+//		System.out.println("Consulta 10 " + this.iAutomovilService.buscarPorColorNativeQuery("ROJO"));
+//		// 3
+//		System.out.println("Consulta 11 " + this.iAutomovilService.buscarPorColorNamedQuery("ROJO"));
+//		// 4
+//		System.out.println("Consulta 12 " + this.iAutomovilService.buscarPorColorNamedNativeQuery("ROJO"));
 
 		// deber
 //		List<Renta> lista=new ArrayList<>();

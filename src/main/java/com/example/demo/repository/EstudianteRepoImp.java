@@ -11,6 +11,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 
 @Transactional
@@ -118,12 +122,12 @@ public class EstudianteRepoImp implements IEstudianteRepo {
 	}
 
 	@Override
-	 public List<Estudiante> buscarPorNombreQueryList(String nombre) {
+	public List<Estudiante> buscarPorNombreQueryList(String nombre) {
 		// select e from Estudiante e where e.nombre= :datoNombre
 		Query jplQuery = this.entityManager.createQuery("select e from Estudiante e where e.nombre = :datoNombre ");
 		jplQuery.setParameter("datoNombre", nombre); // Datos que voy a enlazar datoNombre ---> nombre
 		// Retorna tipos de objetos generico por lo que se debe castear a estudiante
-		return  jplQuery.getResultList();
+		return jplQuery.getResultList();
 	}
 
 	@Override
@@ -140,10 +144,88 @@ public class EstudianteRepoImp implements IEstudianteRepo {
 
 	@Override
 	public EstudianteDTO buscarPorNombreNamedQueryTypedDTO(String nombre) {
-		TypedQuery<EstudianteDTO> myQuery = this.entityManager.createNamedQuery("select NEW EstudianteDTO(e.nombre,e.apellido,e.cedula) from Estudiante e where e.nombre = :datoNombre",
+		TypedQuery<EstudianteDTO> myQuery = this.entityManager.createQuery(
+				"select NEW com.example.demo.modelo.dto.EstudianteDTO(e.nombre,e.apellido,e.cedula) from Estudiante e where e.nombre = :datoNombre",
 				EstudianteDTO.class);
 		myQuery.setParameter("datoNombre", nombre);
 		return myQuery.getSingleResult();
+	}
+
+	@Override
+	public EstudianteDTO buscarPorNombreTypedQueryDTO(String nombre) {
+		TypedQuery<EstudianteDTO> myTypedQuery = this.entityManager.createQuery(
+				"select NEW com.example.demo.modelo.dto.EstudianteDTO(e.nombre,e.apellido,e.cedula) from Estudiante e where e.nombre = :datoNombre ",
+				EstudianteDTO.class);
+		myTypedQuery.setParameter("datoNombre", nombre);
+		return myTypedQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorNombreQueryTypedCriteria(String nombre) {
+		// TODO Auto-generated method stub
+		CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
+		// Especificamos el tipo de retorno de mi query
+
+		CriteriaQuery<Estudiante> myQuery = myBuilder.createQuery(Estudiante.class);
+		// AQUI EMPEZAMOS A CREAR EL SQL COMO TAL
+		// DEFINIENDO EL FROM - Root
+		Root<Estudiante> myTablaFrom = myQuery.from(Estudiante.class);// from Estudiante
+
+		// LAS CONDICIONES WHERE SE CONOCEN EN CRITERIA API QUERY COMO PREDICADOS
+		// e.nombre=:datoNombre
+		Predicate condicion1 = myBuilder.equal(myTablaFrom.get("nombre"), nombre);
+
+		myQuery.select(myTablaFrom).where(condicion1);
+
+		// DECLARADO MI QUERY
+		// LA EJECUCION DEL QUERY LO REALIZAMOS CON CUALQUIER TIPO YA CONOCIDO:
+		// RECOMENDACION TYPEDQUERY
+
+		TypedQuery<Estudiante> mySQL = this.entityManager.createQuery(myQuery);
+
+		return mySQL.getSingleResult();
+	}
+
+	@Override
+	public List<Estudiante> buscarPorNombreCriteriaAndOr(String nombre, String apellido, String genero) {
+		// TODO Auto-generated method stub
+		CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
+		// Especificamos el tipo de retorno de mi query
+
+		CriteriaQuery<Estudiante> myQuery = myBuilder.createQuery(Estudiante.class);
+		// AQUI EMPEZAMOS A CREAR EL SQL COMO TAL
+		// DEFINIENDO EL FROM - Root
+		Root<Estudiante> myTablaFrom = myQuery.from(Estudiante.class);// from Estudiante
+
+		// M: e.nombre= and e.apellido=
+		// F: e.nombre= OR e.apellido=
+		// CREAMOS LOS PREDICADOS
+		// PREDICADO DEL NOMBRE
+
+		Predicate p1 = myBuilder.equal(myTablaFrom.get("nombre"), nombre);
+
+		// PREDICADO DEL APELLIDO
+
+		Predicate p2 = myBuilder.equal(myTablaFrom.get("apellido"), apellido);
+
+		Predicate predicadoFinal = null;
+
+		if (genero.equals("M")) {
+			// PREDICADO DE AND
+			predicadoFinal = myBuilder.and(p1, p2);
+		} else {
+			// PREDICADO DE OR
+			predicadoFinal = myBuilder.or(p1, p2);
+		}
+
+
+		myQuery.select(myTablaFrom).where(predicadoFinal);
+
+		
+		TypedQuery<Estudiante> mySQL = this.entityManager.createQuery(myQuery);
+
+		return mySQL.getResultList();
+		
 	}
 
 }

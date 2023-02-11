@@ -6,17 +6,15 @@ public class EstudianteDTO {
 
 	private String nombre;
 	private String apellido;
-	private String genero;
 	private String cedula;
 	
 	public EstudianteDTO() {
 	}
 	
-	public EstudianteDTO(String nombre, String apellido, String genero, String cedula) {
+	public EstudianteDTO(String nombre, String apellido, String cedula) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.genero = genero;
 		this.cedula = cedula;
 	}
 
@@ -39,14 +37,7 @@ public class EstudianteDTO {
 		this.apellido = apellido;
 	}
 
-	public String getGenero() {
-		return genero;
-	}
-
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-
+	
 	public String getCedula() {
 		return cedula;
 	}
