@@ -1,12 +1,6 @@
-package com.example.demo.repository;
+package com.example.demo.service;
 
-import java.util.List;
-
-import com.example.demo.modelo.Hotel;
-
-public interface IHotelRepository {
-
-	public List<Hotel> buscarHotelInnerJoin(String tipoHabitacion);
+public interface IHotelService {
 	
 	public int eliminarPorNombre(String nombre);
 	public int eliminarPorDireccion(String direccion);
@@ -14,5 +8,4 @@ public interface IHotelRepository {
 	public int actualizarPorNombre(String nombre,String direccion);
 	public int actualizarPorDireccion(String direccion,String nombre);
 
-	
 }

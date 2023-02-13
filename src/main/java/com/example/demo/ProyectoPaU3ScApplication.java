@@ -19,6 +19,7 @@ import com.example.demo.modelo.Vehiculo;
 import com.example.demo.service.IAutomovilService;
 import com.example.demo.service.IClienteService;
 import com.example.demo.service.IEstudianteService;
+import com.example.demo.service.IHotelService;
 import com.example.demo.service.IRentaService;
 import com.example.demo.service.IVehiculoService;
 
@@ -27,7 +28,8 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 
 	@Autowired
 //	private IAutomovilService iAutomovilService;
-	private IEstudianteService estudianteService;
+//	private IEstudianteService estudianteService;
+	private IHotelService hotelService;
 
 //	@Autowired
 //	private IClienteService clienteService;
@@ -156,6 +158,18 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 //		cliente.setRenta(lista);
 //		vehiculo.setRenta(lista);
 		//------------------------------------------------
+//		System.out.println("ACTUALIZAR POR NOMBRE");
+//		System.out.println(this.hotelService.actualizarPorNombre("la vista","marin" ));
+//		
+//		System.out.println("ACTUALIZAR POR DIRECCION");
+//		System.out.println(this.hotelService.actualizarPorDireccion("pujili", "maritimo"));
+		
+		System.out.println("ELIMINAR POR NOMBRE");
+		System.out.println(this.hotelService.eliminarPorNombre("maritimo"));
+
+		System.out.println("ELIMINAR POR DIRECCION");
+		System.out.println(this.hotelService.eliminarPorDireccion("SOLANDA"));
+
 		
 
 	}
