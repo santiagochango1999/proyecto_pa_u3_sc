@@ -28,6 +28,8 @@ public class Habitacion {
 	@JoinColumn(name="habi_id_hotel")
 	private Hotel hotel;
 	
+	
+	
 	//GET Y SET
 	
 	public Integer getId() {
@@ -49,6 +51,15 @@ public class Habitacion {
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	@Override
 	public String toString() {
 		return "Habitacion [id=" + id + ", numero=" + numero + "]";

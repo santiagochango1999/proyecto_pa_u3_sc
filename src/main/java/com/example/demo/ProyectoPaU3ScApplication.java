@@ -14,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.demo.modelo.Automovil;
 import com.example.demo.modelo.Cliente;
 import com.example.demo.modelo.Estudiante;
+import com.example.demo.modelo.Habitacion;
+import com.example.demo.modelo.Hotel;
 import com.example.demo.modelo.Renta;
 import com.example.demo.modelo.Vehiculo;
 import com.example.demo.service.IAutomovilService;
@@ -84,7 +86,7 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 //		
 //		
 //		System.out.println(list);
-		
+
 //		System.out.println(this.estudianteService.buscarPorNombreNamedQueryTypedDTO("santiag"));
 //		System.out.println(this.estudianteService.buscarPorNombreTypedQueryDTO("santiag"));
 //		System.out.println(this.estudianteService.buscarPorNombreQueryTypedCriteria("santiag"));
@@ -157,20 +159,69 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 //		
 //		cliente.setRenta(lista);
 //		vehiculo.setRenta(lista);
-		//------------------------------------------------
+		// ------------------------------------------------
 //		System.out.println("ACTUALIZAR POR NOMBRE");
 //		System.out.println(this.hotelService.actualizarPorNombre("la vista","marin" ));
 //		
 //		System.out.println("ACTUALIZAR POR DIRECCION");
 //		System.out.println(this.hotelService.actualizarPorDireccion("pujili", "maritimo"));
-		
-		System.out.println("ELIMINAR POR NOMBRE");
-		System.out.println(this.hotelService.eliminarPorNombre("maritimo"));
 
-		System.out.println("ELIMINAR POR DIRECCION");
-		System.out.println(this.hotelService.eliminarPorDireccion("SOLANDA"));
+//		System.out.println("ELIMINAR POR NOMBRE");
+//		System.out.println(this.hotelService.eliminarPorNombre("maritimo"));
+//
+//		System.out.println("ELIMINAR POR DIRECCION");
+//		System.out.println(this.hotelService.eliminarPorDireccion("SOLANDA"));
+//
+//		---------------------------------------------------------
+
+		List<Hotel> lista = new ArrayList<>();
+
+		lista = this.hotelService.buscarHotelInnerJoin("VIP");
+
+		System.out.println("INNER JOIN");
+		System.out.println();
+
+		for (Hotel h : lista) {
+			System.out.println(h.getNombre());
+			System.out.println(h.getHabitacion());
+//			for (Habitacion ha : h.getHabitacion()) {
+//				System.out.println("LAs habi son" + h.getNombre() + ":" + ha.getNumero());
+//			}
+		}
+
+
+		lista = this.hotelService.buscarHotelOtherRightJoin("VIP");
+
+		System.out.println("RIGHT JOIN");
+
+		for (Hotel h : lista) {
+			System.out.println(h.getNombre());
+//			for (Habitacion ha : h.getHabitacion()) {
+//				System.out.println("LAs habi son" + h.getNombre() + ":" + ha.getNumero());
+//			}
+		}
 
 		
+		
+		
+
+		lista = this.hotelService.buscarHotelOtherLengtJoin("VIP");
+
+		System.out.println("LEFT JOIN");
+		System.out.println();
+
+		for (Hotel h : lista) {
+			System.out.println(h.getNombre());
+			for (Habitacion ha : h.getHabitacion()) {
+				System.out.println("LAs habi son" + h.getNombre() + ":" + ha.getNumero());
+			}
+		}
+
+//		System.out.println("FULL JOIN");
+//		System.out.println(this.hotelService.buscarHotelOtherFullJoin(""));
+//
+//		System.out.println("FETCH JOIN");
+//		System.out.println(this.hotelService.buscarHotelFetchJoin(""));
 
 	}
 
