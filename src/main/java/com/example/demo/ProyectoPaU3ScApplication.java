@@ -21,6 +21,7 @@ import com.example.demo.modelo.Vehiculo;
 import com.example.demo.service.IAutomovilService;
 import com.example.demo.service.IClienteService;
 import com.example.demo.service.IEstudianteService;
+import com.example.demo.service.IHabitacionService;
 import com.example.demo.service.IHotelService;
 import com.example.demo.service.IRentaService;
 import com.example.demo.service.IVehiculoService;
@@ -32,6 +33,11 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 //	private IAutomovilService iAutomovilService;
 //	private IEstudianteService estudianteService;
 	private IHotelService hotelService;
+
+	@Autowired
+//	private IAutomovilService iAutomovilService;
+//	private IEstudianteService estudianteService;
+	private IHabitacionService habitacionService;
 
 //	@Autowired
 //	private IClienteService clienteService;
@@ -174,48 +180,120 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 //
 //		---------------------------------------------------------
 
+//		List<Hotel> lista = new ArrayList<>();
+//
+//		lista = this.hotelService.buscarHotelInnerJoin("VIP");
+//
+//		System.out.println("INNER JOIN");
+//		System.out.println();
+//
+//		for (Hotel h : lista) {
+//			System.out.println(h.getNombre());
+//			System.out.println(h.getHabitacion());
+//			for (Habitacion ha : h.getHabitacion()) {
+//				System.out.println("La habitaciones de "+h.getNombre()+" son " +ha);
+//			}
+//		}
+//
+//		
+//		List<Hotel> lista2 = new ArrayList<>();
+//
+//		lista2 = this.hotelService.buscarHotelFetchJoin("VIP");
+//
+//		System.out.println("FETCH JOIN");
+//		System.out.println();
+//
+//		for (Hotel h : lista2) {
+//			System.out.println(h.getNombre());
+//			System.out.println(h.getHabitacion());
+//			for (Habitacion ha : h.getHabitacion()) {
+//				System.out.println("La habitaciones de "+h.getNombre()+" son " +ha);
+//			}
+//		}
+
+		// LEFT JOIN
+
+		List<Hotel> lista3 = new ArrayList<>();
+
+		lista3 = this.hotelService.buscarHotelOtherLengtJoin();
+
+		System.out.println("LEFT JOIN HOTEL");
+		System.out.println();
+
+		for (Hotel h : lista3) {
+			System.out.println(h.getNombre());
+
+		}
+
+		// habitaciones
+
+		List<Habitacion> lista4 = new ArrayList<>();
+
+		lista4 = this.habitacionService.buscarHotelOtherLengtJoin();
+
+		System.out.println("-------------lengt JOIN HABITACION-------------------------------");
+		System.out.println();
+
+		for (Habitacion h : lista4) {
+			System.out.println(h != null ? h.getNumero() : null);
+
+		}
+
+		//----------- RIGHT JOIN -----------------------------------------------------------
+
 		List<Hotel> lista = new ArrayList<>();
 
-		lista = this.hotelService.buscarHotelInnerJoin("VIP");
+		lista = this.hotelService.buscarHotelOtherRightJoin();
 
-		System.out.println("INNER JOIN");
+		System.out.println("---------------------RIGHT JOIN HOTEL---------------------");
 		System.out.println();
 
 		for (Hotel h : lista) {
-			System.out.println(h.getNombre());
-			System.out.println(h.getHabitacion());
-//			for (Habitacion ha : h.getHabitacion()) {
-//				System.out.println("LAs habi son" + h.getNombre() + ":" + ha.getNumero());
-//			}
+			System.out.println(h != null ? h.getNombre(): null);
+
 		}
 
+		// habitaciones
 
-		lista = this.hotelService.buscarHotelOtherRightJoin("VIP");
+		List<Habitacion> lista2 = new ArrayList<>();
 
-		System.out.println("RIGHT JOIN");
+		lista2 = this.habitacionService.buscarHotelOtherRightJoin();
 
-		for (Hotel h : lista) {
-			System.out.println(h.getNombre());
-//			for (Habitacion ha : h.getHabitacion()) {
-//				System.out.println("LAs habi son" + h.getNombre() + ":" + ha.getNumero());
-//			}
-		}
-
-		
-		
-		
-
-		lista = this.hotelService.buscarHotelOtherLengtJoin("VIP");
-
-		System.out.println("LEFT JOIN");
+		System.out.println("--------------------------RIGHT JOIN HABITACION-----------------");
 		System.out.println();
 
-		for (Hotel h : lista) {
-			System.out.println(h.getNombre());
-			for (Habitacion ha : h.getHabitacion()) {
-				System.out.println("LAs habi son" + h.getNombre() + ":" + ha.getNumero());
-			}
+		for (Habitacion h : lista2) {
+			System.out.println(h != null ? h.getNumero() : null);
+
+			
 		}
+
+//		lista = this.hotelService.buscarHotelOtherRightJoin("VIP");
+//
+//		System.out.println("RIGHT JOIN");
+//
+//		for (Hotel h : lista) {
+//			System.out.println(h.getNombre());
+////			for (Habitacion ha : h.getHabitacion()) {
+////				System.out.println("LAs habi son" + h.getNombre() + ":" + ha.getNumero());
+////			}
+//		}
+//
+//		
+//		
+//		
+//
+//		lista = this.hotelService.buscarHotelOtherLengtJoin("VIP");
+//
+//		System.out.println("LEFT JOIN");
+//		System.out.println();
+//
+//		for (Hotel h : lista) {
+//			System.out.println(h.getNombre());
+//			for (Habitacion ha : h.getHabitacion()) {
+//				System.out.println("LAs habi son" + h.getNombre() + ":" + ha.getNumero());
+//			}
+//		}
 
 //		System.out.println("FULL JOIN");
 //		System.out.println(this.hotelService.buscarHotelOtherFullJoin(""));

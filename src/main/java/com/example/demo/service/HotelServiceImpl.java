@@ -46,6 +46,8 @@ public class HotelServiceImpl implements IHotelService {
 		// TODO Auto-generated method stub
 		return this.hotelRepository.buscarHotelFetchJoin(tipoHabitacion);
 	}
+	
+	
 
 	
 	
@@ -94,5 +96,27 @@ public class HotelServiceImpl implements IHotelService {
 		return this.hotelRepository.actualizarPorDireccion(direccion, nombre);
 	}
 
+	
+	
+	
+	@Override
+	public List<Hotel> buscarHotelOtherRightJoin() {
+		// TODO Auto-generated method stub
+		return this.hotelRepository.buscarHotelOtherRightJoin();
+	}
+
+	@Override
+	public List<Hotel> buscarHotelOtherLengtJoin() {
+		// TODO Auto-generated method stub
+		return this.hotelRepository.buscarHotelOtherLengtJoin();
+	}
+
+	@Override
+	public List<Hotel> buscarHotelOtherFullJoin() {
+		// TODO Auto-generated method stub
+		return this.hotelRepository.buscarHotelOtherFullJoin();
+	}
+
+	
 	
 }
