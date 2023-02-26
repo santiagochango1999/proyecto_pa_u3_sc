@@ -1,5 +1,7 @@
 package com.example.demo.funcional;
 
-public interface IPersonaFuncion {
+@FunctionalInterface
+public interface IPersonaFuncion<R,T> {
 
+	public R aplicar(T arg1);
 }

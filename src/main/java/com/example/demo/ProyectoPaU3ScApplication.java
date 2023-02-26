@@ -20,7 +20,7 @@ public class ProyectoPaU3ScApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+		System.out.println("hola");
 
 	}
 
